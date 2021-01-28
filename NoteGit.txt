@@ -1,0 +1,73 @@
+git init - tao .git
+git status
+git add "file": đưa file vào staged
+git rm -- cached "file"
+touch "ten file" -> tao file
+notepad "ten file" -> mở file bằng notepad
+git hash-object "ten file" -> xem mã hash của file
+ls : danh sách file trong workspace
+ls -a
+cat "ten file" -> xem nd file
+notepad "ten file" -> mở file = notepad
+git log --oneline
+git log --oneline --decorate --graph : show các commit theo thứ tự theo nhánh
+git branch -> xem nhánh hiện tại
+git branch -a -> xem nhánh toàn bộ
+git branch -m "oldname branch" "newname branch": thay  đổi tên nhánh
+git branch <ten nhanh moi> <ma hash cua commit can tao nhanh> -> tạo nhánh mới từ 1 commit
+git branch -d <tên nhánh> : xóa nhánh
+git branch "ten nhanh moi" "ten nhánh 2" : tạo nhánh mới rẽ ra từ nhánh 2
+git branch --merge : xem nhánh nào được merge vào nhánh hiện tại
+git branch --no-merge : trái ngược trên
+git checkout "hashing commit" -b "ten nhanh moi" 
+git checkout <tên nhánh cần trỏ đến> -> chuyển sang nhánh khác
+git checkout -b <tên nhánh mới> origin/master : tạo nhánh mới từ origin/master
+git checkout "ma hashing" -> lấy ra branch (commit)
+git commit -m "message" : tạo commit  mới
+git commit --amend: nối vào commit trước đó
+git commit --amend --no-edit : không sửa tên commit
+git commit --amend "message"
+git clean -f: xóa file untracked
+git clean -f -d: xóa thư mục untracked
+git restore --unstrage  -> bỏ strage
+git restore "ten file" -> bỏ qua những thay đổi của file đối với commit hiện tại (xóa những thay đổi chưa được lưu tạo ra commit mới)
+git restore --stage "file name" chuyển file từ stage sang untrack
+git remote show origin: xem các liên kết nhánh giữa local vs remote
+git remote -v : xem link liên kết trên github
+git remote rm origin : xóa liên kết giữa folder với link trên github, link online vẫn tồn tại
+git remote add origin https://github.com/Meow-Knight/java06_lesson15_git : liên kết git lên link online, origin xem như là tên của link add có thể thay đổi (khuyến khích origin)
+git rebase --abort : trở lại trạng thái trước khi rebase
+git rebase "ten nhánh" : đưa các commit của nhánh hiện tại lên đầu các commit của nhánh base
+git rebase --continue: tiếp tục rebase sau khi fix conflict
+git reset --soft HEAD~'n' : chuyển về trước đấy n commit, chuyển các file về trạng thái stage
+git reflog : xem tất cả các hash mà HEAD đã đi qua
+git revert "mã hash": bỏ thay đổi trong commit đấy
+git fetch origin : cập nhật từ remote về reposirity
+git push origin HEAD:development
+git push origin "tên nhánh" -d: xóa nhánh trên remote
+git pull origin master
+git pull --rebase origin master
+git ls-tree <tên nhánh> 
+git stash : lưu tạm file
+git stash list: xem danh sách file đang lưu
+// i: insert 
+// esc: thoát insert
+// :wq : thoát cmd
+git ls-tree "mã hash" xem hash tất cả các file trong commit đấy
+git merge "ten nhanh can merge" :  merge nhánh cần merge vào nhánh hiện tại đang trỏ đến"
+git cheery-pick "mã hash của commit" : đưa commit đấy vào đầu của nhánh hiện tại
+***************
+dùng git reset --hard HEAD~1 để quay lại trạng thái trước khi rebase/merge:
+- Rebase: xóa 1 commit, không quay lại trạng thái trước đó => dùng git reflog => git reset HEAD@{...} để quay lại
+- Merge: quay lại trạng thái trước đó
+
+=============
+git config --list --show-origin: xem các thông tin trong máy ()
+git config --list 
+git diff
+git commit --amend --author 'name <email>': commit với author khác
+git commit --amend --reset-author: sau khi thay đổi username & email trong git config
+git reset : đưa 1 hay nhiều file ra khỏi trạng thái staging (xanh)
+git reset "mã hash commit": giống git reset --soft -> git restore --staged . 
+3 dạng reset: --soft --mixed(default) --hard
+git diff > ~/Desktop/a.patch: lưu các thay đổi vào file a.patch
